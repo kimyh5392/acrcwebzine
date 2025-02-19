@@ -1,0 +1,458 @@
+@import 'common';
+
+/* header */
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    padding: 20px 0;
+    background-color: #000;
+    .container {
+        position: relative;
+        font-size: 0;
+        max-width: 1430px;
+        .logo {
+            display: inline-block;
+            vertical-align: top;
+            width: 200px;
+            font-size: 0;
+            a {
+                display: block;
+                img {
+                    display: block;
+                    width: 100%;
+                }
+            }
+        }
+        .vol {
+            display: inline-block;
+            vertical-align: top;
+            padding-top: 28px;
+            margin-left: 40px;
+            p {
+                display: block;
+                font-size: 16px;
+                color: #fff;
+                line-height: 1.4;
+                @include hvt();
+                b {
+                    font-weight: bold;
+                }
+            }
+        }
+        .btn-area {
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            transform: translateY(-50%);
+            .btn-nav {
+                position: relative;
+                display: block;
+                width: 46px;
+                height: 46px;
+                .bar {
+                    position: absolute;
+                    left: 50%;
+                    display: block;
+                    width: 40px;
+                    height: 3px;
+                    border-radius: 10px;
+                    background-color: #fff;
+                    @include transition();
+                    &:nth-of-type(1) {
+                        top: 10px;
+                        margin-left: -20px;
+                    }
+                    &:nth-of-type(2) {
+                        top: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                    &:nth-of-type(3) {
+                        bottom: 10px;
+                        margin-left: -20px;
+                    }
+                }
+                &.close {
+                    .bar {
+                        &:nth-of-type(1) {
+                            top: 50%;
+                            left: 50%;
+                            margin-left: 0;
+                            transform: translate(-50%, -50%) rotate(45deg);
+                        }
+                        &:nth-of-type(2) {
+                            width: 0;
+                        }
+                        &:nth-of-type(3) {
+                            bottom: 50%;
+                            left: 50%;
+                            margin-left: 0;
+                            transform: translate(-50%, 50%) rotate(-45deg);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @media(max-width: $md) {
+        padding: 11.5px 0;
+        .container {
+            .logo {
+                width: 150px;
+            }
+            .vol {
+                display: none;
+            }
+        }
+    }
+}
+
+
+/* footer */
+#footer {
+    text-align: center;
+    padding: 45px 0;
+    background-color: #e5e5e5;
+    .container {
+        position: relative;
+        max-width: 1430px;
+        .logo {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            display: block;
+            width: 200px;
+            transform: translateY(-50%);
+            img {
+                display: block;
+                width: 100%;
+            }
+        }
+        .company-info {
+            letter-spacing: -.5px;
+            > ul {
+                > li {
+                    font-size: 16px;
+                    color: #000;
+                    font-weight: 400;
+                    br {
+                        display: none;
+                    }
+                }
+            }
+            .copyright {
+                font-size: 16px;
+                color: #000;
+                font-weight: 400;
+                margin-top: 10px;
+            }
+        }
+        .btn-area {
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            transform: translateY(-50%);
+            .btn-top {
+                display: block;
+                font-size: 0;
+                span {
+                    display: inline-block;
+                    vertical-align: top;
+                    font-size: 16px;
+                    margin-right: 10px;
+                }
+                img {
+                    display: inline-block;
+                    width: 17px;
+                    vertical-align: top;
+                }
+            }
+        }
+    }
+    @media(max-width: $md) {
+        padding: 40px 0;
+        .container {
+            .logo {
+                position: static;
+                width: 160px;
+                margin: 0 auto;
+                transform: none;
+            }
+            .company-info {
+                margin-top: 20px;
+                > ul {
+                    > li {
+                        font-size: 14px;
+                        br {
+                            display: block;
+                        }
+                    }
+                }
+                .copyright {
+                    font-size: 14px;
+                }
+            }
+            .btn-area {
+                top: 20px;
+                right: 10px;
+                .btn-top {
+                    span {
+                        font-size: 12px;
+                        margin-right: 5px;
+                    }
+                    img {
+                        width: 12px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* nav */
+#nav {
+    position: fixed;
+    top: 116px;
+    right: -100%;
+    width: 100%;
+    height: calc(100vh - 116px);
+    z-index: 10;
+    overflow-y: auto;
+    @include transition();
+    background-color: #fff;
+    .container {
+        position: relative;
+        display: table;
+        height: 100%;
+        .v-align {
+            display: table-cell;
+            text-align: center;
+            vertical-align: top;
+            padding-top: 100px;
+            > ul {
+                > li {
+                    > a {
+                        position: relative;
+                        display: block;
+                        span {
+                            position: absolute;
+                            top: 50%;
+                            width: 100%;
+                            height: 2px;
+                            display: block;
+                            margin-top: -1px;
+                            background-color: #000;
+                            &:before {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                height: 100%;
+                                width: 0;
+                                z-index: 1;
+                                content: '';
+                                display: block;
+                                @include transition($duration: 1s, $timing: ease-in-out);
+                            }
+                            &:after {
+                                position: absolute;
+                                top: 0;
+                                right: 0;
+                                height: 100%;
+                                width: 0;
+                                z-index: 1;
+                                content: '';
+                                display: block;
+                                @include transition($duration: 1s, $timing: ease-in-out);
+                            }
+                        }
+                        p {
+                            position: relative;
+                            z-index: 2;
+                            display: inline-block;
+                            font-size: 24px;
+                            color: #000;
+                            letter-spacing: -1px;
+                            font-weight: 600;
+                            padding: 0 30px;
+                            background-color: #fff;
+                            b {
+                                font-size: 28px;
+                                font-weight: 900;
+                            }
+                        }
+                    }
+                    > ul {
+                        display: none;
+                        padding-top: 40px;
+                        > li {
+                            display: inline-block;
+                            vertical-align: top;
+                            margin-right: 60px;
+                            margin-bottom: 30px;
+                            > a {
+                                display: block;
+                                font-size: 20px;
+                                color: #000;
+                                font-weight: 500;
+                                @include transition();
+                            }
+                        }
+                    }
+                    &.active {
+                        > a {
+                            span {
+                                &:before {
+                                    width: 100%;
+                                }
+                                &:after {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                        > ul {
+                            display: block;
+                        }
+                    }
+                    & ~ li {
+                        margin-top: 60px;
+                    }
+                    &:nth-of-type(1) {
+                        > a {
+                            p {
+                                b {
+                                    color: $kcolor;
+                                }
+                            }
+                            span {
+                                &:before {
+                                    background-color: $kcolor;
+                                }
+                                &:after {
+                                    background-color: $kcolor;
+                                }
+                            }
+                        }
+                        > ul {
+                            > li {
+                                > a {
+                                    &:hover {
+                                        color: $kcolor;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &:nth-of-type(2) {
+                        > a {
+                            p {
+                                b {
+                                    color: #ff8333;
+                                }
+                            }
+                            span {
+                                &:before {
+                                    background-color: #ff8333;
+                                }
+                                &:after {
+                                    background-color: #ff8333;
+                                }
+                            }
+                        }
+                        > ul {
+                            > li {
+                                > a {
+                                    &:hover {
+                                        color: #ff8333;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &:nth-of-type(3) {
+                        > a {
+                            p {
+                                b {
+                                    color: #1761a8;
+                                }
+                            }
+                            span {
+                                &:before {
+                                    background-color: #1761a8;
+                                }
+                                &:after {
+                                    background-color: #1761a8;
+                                }
+                            }
+                        }
+                        > ul {
+                            > li {
+                                > a {
+                                    &:hover {
+                                        color: #1761a8;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @media(max-width: $md) {
+        top: 80px;
+        height: calc(100vh - 80px);
+        .container {
+            height: calc(100vh - 80px);
+            padding-bottom: 100px;
+            .v-align {
+                text-align: left;
+                padding-top: 60px;
+                > ul {
+                    > li {
+                        > a {
+                            > p {
+                                font-size: 20px;
+                                padding-left: 0;
+                                b {
+                                    font-size: 24px;
+                                }
+                            }
+                        }
+                        > ul {
+                            padding-top: 20px;
+                            > li {
+                                display: block;
+                                padding-left: 10px;
+                                margin-bottom: 0;
+                                > a {
+                                    font-size: 16px;
+                                    &:before {
+                                        content: '- ';
+                                    }
+                                }
+                                & ~ li {
+                                    margin-top: 15px;
+                                }
+                            }
+                        }
+                        & ~ li {
+                            margin-top: 40px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+body {
+    &.nav-opened {
+        overflow: hidden;
+        #nav {
+            right: 0;
+        }
+    }
+}
