@@ -17,5 +17,13 @@
         $(this).siblings('ul').stop().slideUp();
         $(this).parent().removeClass('active');
     });
+    
+    // quick top 추가
+    $(document).on('click', '.btn-top', function(e) {
+        $('html, body').stop().animate({
+            scrollTop: 0
+        });
+        e.preventDefault();
+    });
 
 })(jQuery);
